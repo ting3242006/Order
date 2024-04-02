@@ -41,10 +41,10 @@ namespace 點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            flowLayoutPanel1.AddCheckBoxes("雞排飯90", "咖哩飯100", "排骨飯110", "雞絲飯40");
-            flowLayoutPanel2.AddCheckBoxes("玉米濃湯40", "滷味35", "海帶芽30");
-            flowLayoutPanel3.AddCheckBoxes("紅茶30", "綠茶30", "奶茶40", "青茶30", "多多40");
-            flowLayoutPanel4.AddCheckBoxes("伯爵蛋糕120", "草莓鬆餅70", "抹茶鬆餅70", "巧克力厚片35");
+            flowLayoutPanel1.AddCheckboxWithNumericUpDown("雞排飯90", "咖哩飯100", "排骨飯110", "雞絲飯40");
+            flowLayoutPanel2.AddCheckboxWithNumericUpDown("玉米濃湯40", "滷味35", "海帶芽30");
+            flowLayoutPanel3.AddCheckboxWithNumericUpDown("紅茶30", "綠茶30", "奶茶40", "青茶30", "多多40");
+            flowLayoutPanel4.AddCheckboxWithNumericUpDown("伯爵蛋糕120", "草莓鬆餅70", "抹茶鬆餅70", "巧克力厚片35");
         }
     }
 }

@@ -42,7 +42,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(809, 588);
+            this.button1.Location = new System.Drawing.Point(809, 629);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 46);
             this.button1.TabIndex = 0;
@@ -53,7 +53,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(697, 595);
+            this.label1.Location = new System.Drawing.Point(697, 636);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 15);
             this.label1.TabIndex = 2;
@@ -63,28 +63,28 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(40, 57);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(229, 270);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(229, 307);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Location = new System.Drawing.Point(374, 57);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(229, 270);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(229, 307);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(40, 364);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(40, 405);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(229, 270);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(229, 428);
             this.flowLayoutPanel3.TabIndex = 7;
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(374, 364);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(374, 405);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(229, 270);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(229, 428);
             this.flowLayoutPanel4.TabIndex = 8;
             // 
             // label2
@@ -108,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 346);
+            this.label4.Location = new System.Drawing.Point(37, 387);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 15);
             this.label4.TabIndex = 11;
@@ -117,7 +117,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(371, 346);
+            this.label5.Location = new System.Drawing.Point(371, 387);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 12;
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 655);
+            this.ClientSize = new System.Drawing.Size(1039, 877);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
