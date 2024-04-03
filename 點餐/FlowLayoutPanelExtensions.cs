@@ -10,29 +10,26 @@ namespace 點餐
 {
     public static class FlowLayoutPanelExtensions
     {
-        public static void AddCheckBoxes(this FlowLayoutPanel panel, params string[] items)
+        public static void AddCheckboxWithNumericUpDown(this FlowLayoutPanel panel, EventHandler checkedChanged, EventHandler valueChanged, params string[] items)
         {
             foreach (string item in items)
             {
-                CheckBox checkBox = new CheckBox();
-                checkBox.Text = item;
-                panel.Controls.Add(checkBox);
-            }
-        }
-
-        public static void AddCheckboxWithNumericUpDown(this FlowLayoutPanel panel, params string[] items)
-        {
-            foreach (string item in items)
-            {
+                FlowLayoutPanel container = new FlowLayoutPanel();
+                container.Width = panel.Width;
+                container.Height = 50;
                 CheckBox checkbox = new CheckBox();
                 checkbox.Text = item;
-                panel.Controls.Add(checkbox);
+                checkbox.CheckedChanged += checkedChanged;
+                container.Controls.Add(checkbox);
 
                 NumericUpDown numericUpDown = new NumericUpDown();
                 numericUpDown.Minimum = 0;
                 numericUpDown.Maximum = 10;
+                numericUpDown.Width = 40;
                 numericUpDown.Value = 0;
-                panel.Controls.Add(numericUpDown);
+                numericUpDown.ValueChanged += valueChanged;
+                container.Controls.Add(numericUpDown);
+                panel.Controls.Add(container);
             }
         }
 
@@ -40,14 +37,20 @@ namespace 點餐
         {
             int total = 0;
 
-            for (int i = 0; i < panel.Controls.Count; i += 2)
+            for (int i = 0; i < panel.Controls.Count; i++)
             {
-                CheckBox checkBox = panel.Controls[i] as CheckBox;
-                if (checkBox != null && checkBox.Checked)
+                FlowLayoutPanel container = panel.Controls[i] as FlowLayoutPanel;
+
+                if (container != null)
                 {
-                    int quantity = (int)(panel.Controls[i + 1] as NumericUpDown).Value;
-                    int price = checkBox.GetPrice();
-                    total += quantity * price;
+                    CheckBox checkBox = container.Controls[0] as CheckBox;
+                    NumericUpDown numericUpDown = container.Controls[1] as NumericUpDown;
+                    if (checkBox != null && checkBox.Checked)
+                    {
+                        int quantity = (int)numericUpDown.Value;
+                        int price = checkBox.GetPrice();
+                        total += quantity * price;
+                    }
                 }
             }
             //total += panel.Controls.OfType<CheckBox>().Where(cb => cb.Checked).Sum(cb => cb.GetPrice());

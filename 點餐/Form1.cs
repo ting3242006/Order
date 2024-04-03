@@ -41,10 +41,47 @@ namespace 點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            flowLayoutPanel1.AddCheckboxWithNumericUpDown("雞排飯90", "咖哩飯100", "排骨飯110", "雞絲飯40");
-            flowLayoutPanel2.AddCheckboxWithNumericUpDown("玉米濃湯40", "滷味35", "海帶芽30");
-            flowLayoutPanel3.AddCheckboxWithNumericUpDown("紅茶30", "綠茶30", "奶茶40", "青茶30", "多多40");
-            flowLayoutPanel4.AddCheckboxWithNumericUpDown("伯爵蛋糕120", "草莓鬆餅70", "抹茶鬆餅70", "巧克力厚片35");
+            flowLayoutPanel1.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "雞排飯90", "咖哩飯100", "排骨飯110", "雞絲飯40");
+            flowLayoutPanel2.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "玉米濃湯40", "滷味35", "海帶芽30");
+            flowLayoutPanel3.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "紅茶30", "綠茶30", "奶茶40", "青茶30", "多多40");
+            flowLayoutPanel4.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "伯爵蛋糕120", "草莓鬆餅70", "抹茶鬆餅70", "巧克力厚片35");
+            flowLayoutPanel1.Width = 300;
+            flowLayoutPanel2.Width = 300;
+            flowLayoutPanel3.Width = 300;
+            flowLayoutPanel4.Width = 300;
+        }
+
+        public void CheckedChange(object sender, EventArgs e)
+        {
+
+            CheckBox checkBox = (CheckBox)sender;
+            Control parent = checkBox.Parent;
+            NumericUpDown numericUpDown = parent.Controls[1] as NumericUpDown;
+            if (checkBox.Checked)
+            {
+                numericUpDown.Value = 1;
+            }
+            else
+            {
+                numericUpDown.Value = 0;
+            }
+            calculateTotal();
+        }
+        public void ValueChange(object sender, EventArgs e)
+        {
+            NumericUpDown numericUpDown = (NumericUpDown)sender;
+            Control parent = numericUpDown.Parent;
+            CheckBox checkBox = parent.Controls[0] as CheckBox;
+
+            if (numericUpDown.Value != 0)
+            {
+                checkBox.Checked = true;
+            }
+            else
+            {
+                checkBox.Checked = false;
+            }
+            calculateTotal();
         }
     }
 }
