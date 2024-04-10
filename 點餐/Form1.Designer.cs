@@ -38,11 +38,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(809, 629);
+            this.button1.Location = new System.Drawing.Point(829, 691);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 46);
             this.button1.TabIndex = 0;
@@ -53,7 +54,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(969, 645);
+            this.label1.Location = new System.Drawing.Point(989, 707);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 15);
             this.label1.TabIndex = 2;
@@ -123,11 +124,19 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "甜點";
             // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(619, 27);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(401, 578);
+            this.flowLayoutPanel5.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1039, 877);
+            this.Controls.Add(this.flowLayoutPanel5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -158,6 +167,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
     }
 }
 
