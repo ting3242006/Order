@@ -15,9 +15,11 @@ namespace 點餐
     public partial class Form1 : Form
     {
         private const int DefaultPanelWidth = 300;
+        private Discount discount;
         public Form1()
         {
             InitializeComponent();
+            discount = new Discount();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -34,10 +36,6 @@ namespace 點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-
-
             flowLayoutPanel1.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "雞排飯$90", "咖哩飯$100", "排骨飯$110", "雞絲飯$40");
             flowLayoutPanel2.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "玉米濃湯$40", "滷味$35", "海帶芽$30");
             flowLayoutPanel3.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "紅茶$30", "綠茶$30", "奶茶$40", "青茶$30", "多多$40");
@@ -47,7 +45,46 @@ namespace 點餐
             SetPanelWidth(flowLayoutPanel3);
             SetPanelWidth(flowLayoutPanel4);
 
+            //雞排飯買二送一
+            //咖哩飯買兩個送草莓鬆餅
+            //排骨飯三個300
+            //雞絲飯搭滷味70元
+            //排骨飯搭奶茶120元
+            //排骨飯買三個打85折
+            //全場打8折
+
+            List<KeyValueModel> list = new List<KeyValueModel>()
+            {
+                new KeyValueModel("雞排飯買二送一", "點餐.ChickenRiceBuyTwoGetOneDiscount"),
+                new KeyValueModel("咖哩飯買兩個送草莓鬆餅", "點餐.CurryRiceBuyTwoGetStrawberryPancakeDiscount"),
+                new KeyValueModel("排骨飯三個300", "點餐.RibRiceThreeFor300Discount"),
+                new KeyValueModel("雞絲飯搭滷味70元", "點餐.ChickenRiceWithBraisedFood70Discount"),
+                new KeyValueModel("排骨飯搭奶茶120元", "點餐.SpareRibsRiceWithMilkTea120Discount"),
+                new KeyValueModel("全場打8折", "點餐.AllItemDiscountBy20Percent")
+            };
+
+            comboBox1.DataSource = list;
+            comboBox1.DisplayMember = "Key";
+            comboBox1.ValueMember = "Value";
+
+
+
+
+            comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
+            Controls.Add(comboBox1);
+
             EventHandlers.RenderPanel += UpdatePanel;
+            //    ShowPanel.NotifyRenderItem(Order.GetOrderItems());
+        }
+
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string discountType = comboBox1.SelectedValue.ToString();
+            if (discountType != null)
+            {
+                discount.DiscountOrder(discountType, Order.GetOrderItems());
+                UpdateTotalPrice();
+            }
         }
 
         private void UpdatePanel(object sender, FlowLayoutPanel e)
@@ -91,7 +128,7 @@ namespace 點餐
             int price = int.Parse(parts[1].Trim());
 
             Item item = new Item(name, price, quantity);
-            Order.AddOrder(item);
+            Order.AddOrder(item, comboBox1.SelectedValue.ToString());
 
             //ShowPanel.NotifyRenderItem(flowLayoutPanel5);
 

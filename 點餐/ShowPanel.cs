@@ -19,7 +19,7 @@ namespace 點餐
 
             Label nameLabel = new Label();
             nameLabel.Text = itemName;
-            nameLabel.Width = 40;
+            nameLabel.Width = 70;
 
             Label priceLabel = new Label();
             priceLabel.Text = itemPrice.ToString();
@@ -68,7 +68,7 @@ namespace 點餐
         {
             Label nameLabel = new Label();
             nameLabel.Text = "品名";
-            nameLabel.Width = 40;
+            nameLabel.Width = 70;
             nameLabel.Font = new Font(nameLabel.Font, FontStyle.Bold);
 
             Label priceLabel = new Label();

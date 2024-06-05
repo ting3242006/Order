@@ -124,15 +124,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "雞排飯買二送一",
-            "咖哩飯買兩個送草莓鬆餅",
-            "排骨飯三個300",
-            "雞絲飯搭滷味70元",
-            "排骨飯搭奶茶120元",
-            "排骨飯買三個打85折",
-            "全場打8折"});
-            this.comboBox1.Location = new System.Drawing.Point(626, 678);
+            this.comboBox1.Location = new System.Drawing.Point(794, 634);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(233, 23);
             this.comboBox1.TabIndex = 14;
