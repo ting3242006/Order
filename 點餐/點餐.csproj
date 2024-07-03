@@ -33,7 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,12 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllItemDiscountBy20Percent.cs" />
+    <Compile Include="Discounts\AllItemDiscountBy20Percent.cs" />
     <Compile Include="CheckBoxExtensions.cs" />
-    <Compile Include="ChickenRiceBuyTwoGetOneDiscount.cs" />
-    <Compile Include="ChickenRiceWithBraisedFood70Discount.cs" />
-    <Compile Include="CurryRiceBuyTwoGetStrawberryPancakeDiscount .cs" />
+    <Compile Include="Discounts\ChickenRiceBuyTwoGetOneDiscount.cs" />
+    <Compile Include="Discounts\ChickenRiceWithBraisedFood70Discount.cs" />
+    <Compile Include="Discounts\CurryRiceBuyTwoGetStrawberryPancakeDiscount .cs" />
     <Compile Include="Discount.cs" />
+    <Compile Include="DiscountContext.cs" />
     <Compile Include="DiscountFactory.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="FlowLayoutPanelExtensions.cs" />
@@ -62,15 +67,17 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IDiscount.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="KeyValueModel.cs" />
-    <Compile Include="NoDiscount.cs" />
+    <Compile Include="IDiscountStrategy.cs" />
+    <Compile Include="MenuModel.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Discounts\NoDiscount.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RibRiceThreeFor300Discount.cs" />
+    <Compile Include="Discounts\RibRiceThreeFor300Discount.cs" />
     <Compile Include="ShowPanel.cs" />
-    <Compile Include="SpareRibsRiceWithMilkTea120Discount.cs" />
+    <Compile Include="Discounts\SpareRibsRiceWithMilkTea120Discount.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +90,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Menu.json" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

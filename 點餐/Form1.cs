@@ -1,14 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static 點餐.MenuModel;
 
 namespace 點餐
 {
@@ -36,14 +40,12 @@ namespace 點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            flowLayoutPanel1.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "雞排飯$90", "咖哩飯$100", "排骨飯$110", "雞絲飯$40");
-            flowLayoutPanel2.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "玉米濃湯$40", "滷味$35", "海帶芽$30");
-            flowLayoutPanel3.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "紅茶$30", "綠茶$30", "奶茶$40", "青茶$30", "多多$40");
-            flowLayoutPanel4.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, "伯爵蛋糕$120", "草莓鬆餅$70", "抹茶鬆餅$70", "巧克力厚片$35");
-            SetPanelWidth(flowLayoutPanel1);
-            SetPanelWidth(flowLayoutPanel2);
-            SetPanelWidth(flowLayoutPanel3);
-            SetPanelWidth(flowLayoutPanel4);
+            string path = ConfigurationManager.AppSettings["path"];
+            string json = File.ReadAllText(path, Encoding.UTF8);
+            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(json);
+
+            AddMenuItemsToPanel(flowLayoutPanel1, menuModel.Menus);
+
 
             //雞排飯買二送一
             //咖哩飯買兩個送草莓鬆餅
@@ -53,28 +55,61 @@ namespace 點餐
             //排骨飯買三個打85折
             //全場打8折
 
-            List<KeyValueModel> list = new List<KeyValueModel>()
+            List<KeyValueModel> list = new List<KeyValueModel>();
+
+            foreach (var stragedy in menuModel.Strategies)
             {
-                new KeyValueModel("雞排飯買二送一", "點餐.ChickenRiceBuyTwoGetOneDiscount"),
-                new KeyValueModel("咖哩飯買兩個送草莓鬆餅", "點餐.CurryRiceBuyTwoGetStrawberryPancakeDiscount"),
-                new KeyValueModel("排骨飯三個300", "點餐.RibRiceThreeFor300Discount"),
-                new KeyValueModel("雞絲飯搭滷味70元", "點餐.ChickenRiceWithBraisedFood70Discount"),
-                new KeyValueModel("排骨飯搭奶茶120元", "點餐.SpareRibsRiceWithMilkTea120Discount"),
-                new KeyValueModel("全場打8折", "點餐.AllItemDiscountBy20Percent")
-            };
+                KeyValueModel key = new KeyValueModel(stragedy.name, stragedy.method);
+                list.Add(key);
+            }
+            //6/12 HW: 訂折扣方法的 Json 規格
+            //List<KeyValueModel> list = new List<KeyValueModel>()
+            //{
+            //    new KeyValueModel("雞排飯買二送一", "點餐.ChickenRiceBuyTwoGetOneDiscount"),
+            //    new KeyValueModel("咖哩飯買兩個送草莓鬆餅", "點餐.CurryRiceBuyTwoGetStrawberryPancakeDiscount"),
+            //    new KeyValueModel("排骨飯三個300", "點餐.RibRiceThreeFor300Discount"),
+            //    new KeyValueModel("雞絲飯搭滷味70元", "點餐.ChickenRiceWithBraisedFood70Discount"),
+            //    new KeyValueModel("排骨飯搭奶茶120元", "點餐.SpareRibsRiceWithMilkTea120Discount"),
+            //    new KeyValueModel("全場打8折", "點餐.AllItemDiscountBy20Percent"),
+            //    new KeyValueModel("草莓鬆餅搭奶茶9折", "點餐.AllItemDiscountBy20Percent")
+            //};
 
             comboBox1.DataSource = list;
             comboBox1.DisplayMember = "Key";
             comboBox1.ValueMember = "Value";
-
-
-
 
             comboBox1.SelectedIndexChanged += ComboBox1_SelectedIndexChanged;
             Controls.Add(comboBox1);
 
             EventHandlers.RenderPanel += UpdatePanel;
             //    ShowPanel.NotifyRenderItem(Order.GetOrderItems());
+        }
+
+
+
+        private void AddMenuItemsToPanel(FlowLayoutPanel panel, 點餐.MenuModel.Menu[] menus)
+        {
+            panel.Controls.Clear();
+
+            foreach (var menu in menus)
+            {
+                Label titleLabel = new Label();
+                titleLabel.Text = menu.Type;
+                FlowLayoutPanel outsidePanel = new FlowLayoutPanel();
+                outsidePanel.Height = 200;
+                outsidePanel.Controls.Add(titleLabel);
+
+                foreach (var item in menu.Items)
+                {
+
+                    FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+                    flowLayoutPanel.AddCheckboxWithNumericUpDown(CheckedChange, ValueChange, $"{item.Name}${item.Price}");
+                    flowLayoutPanel.Height = 30;
+
+                    outsidePanel.Controls.Add(flowLayoutPanel);
+                }
+                panel.Controls.Add(outsidePanel);
+            }
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

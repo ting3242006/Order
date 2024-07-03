@@ -13,17 +13,34 @@ namespace 點餐
 
             list.RemoveAll(x => x.Name.Contains("贈送") || x.Name.Contains("折扣"));
 
-            // 看小算盤專案 DESIGN PATTERN 架構來復現在這個專案
-            // Simple Factory Design Pattern
-            // 抽象\工廠\其他六個
-            // 開八個類別
-            // ShowPanel.NotifyRenderItem(list);
-            Type t = Type.GetType(discountType);
-
-            IDiscount discount = (IDiscount)Activator.CreateInstance(t); //DiscountFactory.CreateDiscount(discountType);
-            discount.ApplyDiscount(list);
+            // 改成策略模式
+            IDiscountStrategy discountStrategy = GetDiscountStrategy(discountType);
+            discountStrategy.ApplyDiscount(list);
 
             ShowPanel.NotifyRenderItem(list);
+            //Type t = Type.GetType(discountType);
+
+            //IDiscount discount = (IDiscount)Activator.CreateInstance(t); //DiscountFactory.CreateDiscount(discountType);
+            //discount.ApplyDiscount(list);
+
+            //ShowPanel.NotifyRenderItem(list);
+        }
+
+        // 處理傳入的 discountType
+        private IDiscountStrategy GetDiscountStrategy(string discountType)
+        {
+            if (string.IsNullOrEmpty(discountType))
+            {
+                return new NoDiscount();
+            }
+
+            Type strategyType = Type.GetType(discountType);
+            if (strategyType == null || !typeof(IDiscountStrategy).IsAssignableFrom(strategyType))
+            {
+                throw new ArgumentException("未知的折扣類型");
+            }
+            // 拿到 strategyType 便創建相對應的折扣策略對象
+            return (IDiscountStrategy)Activator.CreateInstance(strategyType);
         }
     }
 }

@@ -10,10 +10,17 @@ namespace 點餐
     {
         public String Key { get; set; }
         public String Value { get; set; }
+        public string V { get; }
+
         public KeyValueModel(String Key, String Value)
         {
             this.Key = Key;
             this.Value = Value;
+        }
+
+        public KeyValueModel(string v)
+        {
+            V = v;
         }
     }
 }

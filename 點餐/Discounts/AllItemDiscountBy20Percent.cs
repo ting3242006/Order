@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 點餐
 {
-    public class AllItemDiscountBy20Percent : IDiscount
+    public class AllItemDiscountBy20Percent : IDiscountStrategy
     {
         public void ApplyDiscount(List<Item> items)
         {

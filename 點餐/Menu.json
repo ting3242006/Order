@@ -1,0 +1,444 @@
+{
+  "Menus": [
+    {
+      "Type": "主餐",
+      "Items": [
+        {
+          "Name": "雞排飯",
+          "Price": 90
+        },
+        {
+          "Name": "咖哩飯",
+          "Price": 100
+        },
+        {
+          "Name": "排骨飯",
+          "Price": 110
+        },
+        {
+          "Name": "雞絲飯",
+          "Price": 40
+        }
+      ]
+    },
+    {
+      "Type": "附餐",
+      "Items": [
+        {
+          "Name": "玉米濃湯",
+          "Price": 40
+        },
+        {
+          "Name": "滷味",
+          "Price": 35
+        },
+        {
+          "Name": "海帶芽",
+          "Price": 30
+        }
+      ]
+    },
+    {
+      "Type": "甜點",
+      "Items": [
+        {
+          "Name": "伯爵蛋糕",
+          "Price": 120
+        },
+        {
+          "Name": "草莓鬆餅",
+          "Price": 70
+        },
+        {
+          "Name": "抹茶鬆餅",
+          "Price": 70
+        },
+        {
+          "Name": "巧克力厚片",
+          "Price": 35
+        }
+      ]
+    },
+    {
+      "Type": "飲料",
+      "Items": [
+        {
+          "Name": "紅茶",
+          "Price": 30
+        },
+        {
+          "Name": "綠茶",
+          "Price": 30
+        },
+        {
+          "Name": "奶茶",
+          "Price": 40
+        },
+        {
+          "Name": "青茶",
+          "Price": 30
+        },
+        {
+          "Name": "多多",
+          "Price": 40
+        }
+      ]
+    }
+  ],
+  "Strategies": [
+    {
+      "id": "DISC001",
+      "name": "雞排飯買二送一",
+      "method": "點餐.ChickenRiceBuyTwoGetOneDiscount",
+      "buyXgetY": 
+        {
+          "mainItem": "雞排飯",
+          "quantity": 2,
+          "subItem": "雞排飯",
+          "subQuantity": 1,
+          "price": 0,
+          "discountRate": 1
+        },
+        "buyYgetZ": 
+        {
+           "mainItem": "",
+           "quantity": 0,
+           "subItem": "",
+           "subQuantity": 0,
+           "price": 0,
+           "discountRate": 1
+        },
+        "fixedPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+        "comboPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "滷味",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+        "allPercentageDiscount": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 0.8
+        },
+      "comboPercentageDiscount":
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      }
+    },
+    {
+      "id": "DISC002",
+      "name": "咖哩飯買兩個送草莓鬆餅",
+      "method": "點餐.CurryRiceBuyTwoGetStrawberryPancakeDiscount",
+      "buyXgetY": 
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      },
+      "buyYgetZ": 
+        {
+           "mainItem": "咖哩飯",
+           "quantity": 2,
+           "subItem": "草莓鬆餅",
+           "subQuantity": 1,
+           "price": 0,
+           "discountRate": 1
+          },
+          "fixedPrice": 
+          {
+            "mainItem": "",
+            "quantity": 0,
+            "subItem": "",
+            "subQuantity": 0,
+            "price": 0,
+            "discountRate": 1
+          },
+          "comboPrice": 
+          {
+            "mainItem": "",
+            "quantity": 0,
+            "subItem": "",
+            "subQuantity": 0,
+            "price": 0,
+            "discountRate": 1
+          },
+          "allPercentageDiscount": 
+          {
+            "mainItem": "",
+            "quantity": 0,
+            "subItem": "",
+            "subQuantity": 0,
+            "price": 0,
+            "discountRate": 1
+          },
+        "comboPercentageDiscount":
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        }
+    },
+    {
+      "id": "DISC003",
+      "name": "排骨飯三個300",
+      "method": "點餐.RibRiceThreeFor300Discount",
+      "buyXgetY": 
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      },
+      "buyYgetZ": 
+        {
+           "mainItem": "",
+           "quantity": 0,
+           "subItem": "",
+           "subQuantity": 0,
+           "price": 0,
+           "discountRate": 1
+          },
+      "fixedPrice": 
+        {
+          "mainItem": "排骨飯",
+          "quantity": 3,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 300,
+          "discountRate": 1
+        },
+        "comboPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+        "allPercentageDiscount": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPercentageDiscount":
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      }
+    },
+    { 
+      "id": "DISC004",
+      "name": "雞絲飯搭滷味70元",
+      "method": "點餐.ChickenRiceWithBraisedFood70Discount",
+      "buyXgetY": 
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      },
+      "buyYgetZ": 
+        {
+           "mainItem": "",
+           "quantity": 0,
+           "subItem": "",
+           "subQuantity": 0,
+           "price": 0,
+           "discountRate": 1
+          },
+      "fixedPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPrice": 
+        {
+          "mainItem": "雞絲飯",
+          "quantity": 1,
+          "subItem": "滷味",
+          "subQuantity": 1,
+          "price": 70,
+          "discountRate": 1
+        },
+        "allPercentageDiscount": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPercentageDiscount":
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      }
+    },
+    {
+      "id": "DISC005",
+      "name": "全場打8折",
+      "method": "點餐.AllItemDiscountBy20Percent",
+      "buyXgetY": 
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      },
+      "buyYgetZ": 
+        {
+           "mainItem": "",
+           "quantity": 0,
+           "subItem": "",
+           "subQuantity": 0,
+           "price": 0,
+           "discountRate": 1
+          },
+      "fixedPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "allPercentageDiscount": 
+        {
+          "mainItem": "",
+          "quantity": 1,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 0.8
+        },
+      "comboPercentageDiscount":
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      }
+    },
+    {
+      "id": "DISC006",
+      "name": "草莓鬆餅搭奶茶9折",
+      "method": "點餐.StrawberryPancakeWithMilkTea10PercentOff",
+      "buyXgetY": 
+      {
+        "mainItem": "",
+        "quantity": 0,
+        "subItem": "",
+        "subQuantity": 0,
+        "price": 0,
+        "discountRate": 1
+      },
+      "buyYgetZ": 
+        {
+           "mainItem": "",
+           "quantity": 0,
+           "subItem": "",
+           "subQuantity": 0,
+           "price": 0,
+           "discountRate": 1
+          },
+      "fixedPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPrice": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "allPercentageDiscount": 
+        {
+          "mainItem": "",
+          "quantity": 0,
+          "subItem": "",
+          "subQuantity": 0,
+          "price": 0,
+          "discountRate": 1
+        },
+      "comboPercentageDiscount":
+        {
+          "mainItem": "草莓鬆餅",
+          "quantity": 1,
+          "subItem": "奶茶",
+          "subQuantity": 1,
+          "price": 0,
+          "discountRate": 0.9
+        }
+    }
+  ]
+}

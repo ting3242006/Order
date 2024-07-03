@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace 點餐
 {
-    internal class NoDiscount : IDiscount
+    // 定義一個抽象的折扣接口
+    public interface IDiscountStrategy
     {
-        public void ApplyDiscount(List<Item> items)
-        {
-            return;
-        }
+        void ApplyDiscount(List<Item> items);
     }
 }

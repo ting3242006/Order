@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 點餐
 {
-    public class ChickenRiceWithBraisedFood70Discount : IDiscount
+    public class ChickenRiceWithBraisedFood70Discount : IDiscountStrategy
     {
         public void ApplyDiscount(List<Item> items)
         {
