@@ -20,10 +20,13 @@ namespace 點餐
     {
         private const int DefaultPanelWidth = 300;
         private Discount discount;
+        private List<Strategy> strategies;
+
         public Form1()
         {
             InitializeComponent();
             discount = new Discount();
+            strategies = new List<Strategy>();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -40,9 +43,9 @@ namespace 點餐
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string path = ConfigurationManager.AppSettings["path"];
-            string json = File.ReadAllText(path, Encoding.UTF8);
-            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(json);
+            string path = ConfigurationManager.AppSettings["path"]; // 從配置文件中獲取 Json 路徑
+            string json = File.ReadAllText(path, Encoding.UTF8); // 讀取 Json 內容
+            MenuModel menuModel = JsonConvert.DeserializeObject<MenuModel>(json); // 反序列化 JSON
 
             AddMenuItemsToPanel(flowLayoutPanel1, menuModel.Menus);
 
@@ -57,11 +60,13 @@ namespace 點餐
 
             List<KeyValueModel> list = new List<KeyValueModel>();
 
+            // 7/3 HW: 動態生成折扣的策略，可以選取使用
             foreach (var stragedy in menuModel.Strategies)
             {
-                KeyValueModel key = new KeyValueModel(stragedy.name, stragedy.method);
+                KeyValueModel key = new KeyValueModel(stragedy.name, stragedy);
                 list.Add(key);
             }
+
             //6/12 HW: 訂折扣方法的 Json 規格
             //List<KeyValueModel> list = new List<KeyValueModel>()
             //{
@@ -114,7 +119,7 @@ namespace 點餐
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string discountType = comboBox1.SelectedValue.ToString();
+            Strategy discountType = (Strategy)comboBox1.SelectedValue;
             if (discountType != null)
             {
                 discount.DiscountOrder(discountType, Order.GetOrderItems());
@@ -163,7 +168,7 @@ namespace 點餐
             int price = int.Parse(parts[1].Trim());
 
             Item item = new Item(name, price, quantity);
-            Order.AddOrder(item, comboBox1.SelectedValue.ToString());
+            Order.AddOrder(item, (Strategy)comboBox1.SelectedValue);
 
             //ShowPanel.NotifyRenderItem(flowLayoutPanel5);
 

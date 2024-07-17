@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 點餐
 {
-    internal class MenuModel
+    public class MenuModel
     {
 
         public Menu[] Menus { get; set; }

@@ -58,6 +58,7 @@
     <Compile Include="Discount.cs" />
     <Compile Include="DiscountContext.cs" />
     <Compile Include="DiscountFactory.cs" />
+    <Compile Include="Discounts\StrawberryPancakeWithMilkTea10PercentOff.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="FlowLayoutPanelExtensions.cs" />
     <Compile Include="Form1.cs">
@@ -78,6 +79,14 @@
     <Compile Include="Discounts\RibRiceThreeFor300Discount.cs" />
     <Compile Include="ShowPanel.cs" />
     <Compile Include="Discounts\SpareRibsRiceWithMilkTea120Discount.cs" />
+    <Compile Include="Stragedies\AllPercentageDiscount.cs" />
+    <Compile Include="Stragedies\BuyXgetYfree.cs" />
+    <Compile Include="Stragedies\BuyYgetZ.cs" />
+    <Compile Include="Stragedies\ComboPercentageDiscount.cs" />
+    <Compile Include="Stragedies\ComboPrice.cs" />
+    <Compile Include="Stragedies\FixedPrice.cs" />
+    <Compile Include="Stragedies\IStrategy.cs" />
+    <Compile Include="Stragedies\NoStrategy.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,5 +114,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

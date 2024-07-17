@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
+using static 點餐.MenuModel;
 
 namespace 點餐
 {
@@ -12,7 +13,7 @@ namespace 點餐
         private static List<Item> list = new List<Item>();
 
         // option 是 discountType
-        public static void AddOrder(Item item, string option)
+        public static void AddOrder(Item item, Strategy strategy)
         {
             Discount discount = new Discount();
             //新增:如果沒有這個品項，就要新增
@@ -26,7 +27,7 @@ namespace 點餐
             if (product == null && item.Quantity != 0) // 新增
             {
                 list.Add(item);
-                discount.DiscountOrder(option, list);
+                discount.DiscountOrder(strategy, list);
                 // discountOrder
                 ShowPanel.NotifyRenderItem(list);
                 return;
@@ -34,7 +35,7 @@ namespace 點餐
 
             if (product != null && item.Quantity == 0) // 刪除
             {
-                discount.DiscountOrder(option, list);
+                discount.DiscountOrder(strategy, list);
                 list.Remove(product);
                 ShowPanel.NotifyRenderItem(list);
                 return;
@@ -45,7 +46,7 @@ namespace 點餐
 
                 product.Quantity = item.Quantity;
                 product.SubTotal = item.Price * item.Quantity;
-                discount.DiscountOrder(option, list);
+                discount.DiscountOrder(strategy, list);
                 ShowPanel.NotifyRenderItem(list);
             }
 

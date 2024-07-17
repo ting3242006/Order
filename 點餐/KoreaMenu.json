@@ -1,23 +1,24 @@
+
 {
   "Menus": [
     {
       "Type": "主餐",
       "Items": [
         {
-          "Name": "雞排飯",
-          "Price": 90
+          "Name": "石鍋拌飯",
+          "Price": 150
         },
         {
-          "Name": "咖哩飯",
+          "Name": "泡菜炒飯",
+          "Price": 120
+        },
+        {
+          "Name": "韓式炸雞",
+          "Price": 200
+        },
+        {
+          "Name": "辣炒年糕",
           "Price": 100
-        },
-        {
-          "Name": "排骨飯",
-          "Price": 110
-        },
-        {
-          "Name": "雞絲飯",
-          "Price": 40
         }
       ]
     },
@@ -25,16 +26,16 @@
       "Type": "附餐",
       "Items": [
         {
-          "Name": "玉米濃湯",
+          "Name": "韓式泡菜",
+          "Price": 50
+        },
+        {
+          "Name": "海帶湯",
           "Price": 40
         },
         {
-          "Name": "滷味",
-          "Price": 35
-        },
-        {
-          "Name": "海帶芽",
-          "Price": 30
+          "Name": "煎餃",
+          "Price": 60
         }
       ]
     },
@@ -42,20 +43,12 @@
       "Type": "甜點",
       "Items": [
         {
-          "Name": "伯爵蛋糕",
-          "Price": 120
+          "Name": "韓式米糕",
+          "Price": 80
         },
         {
-          "Name": "草莓鬆餅",
+          "Name": "紅豆鬆餅",
           "Price": 70
-        },
-        {
-          "Name": "抹茶鬆餅",
-          "Price": 70
-        },
-        {
-          "Name": "巧克力厚片",
-          "Price": 35
         }
       ]
     },
@@ -63,37 +56,30 @@
       "Type": "飲料",
       "Items": [
         {
-          "Name": "紅茶",
-          "Price": 30
+          "Name": "檸檬紅茶",
+          "Price": 35
         },
         {
-          "Name": "綠茶",
-          "Price": 30
+          "Name": "蜂蜜柚子茶",
+          "Price": 50
         },
         {
-          "Name": "奶茶",
-          "Price": 40
-        },
-        {
-          "Name": "青茶",
-          "Price": 30
-        },
-        {
-          "Name": "多多",
-          "Price": 40
+          "Name": "韓國燒酒",
+          "Price": 120
         }
       ]
     }
-  ],
+  ]
+,
   "Strategies": [
     {
-      "id": "DISC001",
-      "name": "雞排飯買二送一",
+      "id": "DISC007",
+      "name": "石鍋拌飯買二送一",
       "method": "點餐.Stragedies.BuyXgetYfree",
       "buyXgetY": {
-        "mainItem": "雞排飯",
+        "mainItem": "石鍋拌飯",
         "quantity": 2,
-        "subItem": "雞排飯",
+        "subItem": "石鍋拌飯",
         "subQuantity": 1,
         "price": 0,
         "discountRate": 1
@@ -117,7 +103,7 @@
       "comboPrice": {
         "mainItem": "",
         "quantity": 0,
-        "subItem": "滷味",
+        "subItem": "海帶湯",
         "subQuantity": 0,
         "price": 0,
         "discountRate": 1
@@ -140,8 +126,8 @@
       }
     },
     {
-      "id": "DISC002",
-      "name": "咖哩飯買兩個送草莓鬆餅",
+      "id": "DISC008",
+      "name": "泡菜炒飯買兩個送紅豆鬆餅",
       "method": "點餐.Stragedies.BuyYgetZ",
       "buyXgetY": {
         "mainItem": "",
@@ -152,9 +138,9 @@
         "discountRate": 1
       },
       "buyYgetZ": {
-        "mainItem": "咖哩飯",
+        "mainItem": "泡菜炒飯",
         "quantity": 2,
-        "subItem": "草莓鬆餅",
+        "subItem": "紅豆鬆餅",
         "subQuantity": 1,
         "price": 0,
         "discountRate": 1
@@ -193,8 +179,8 @@
       }
     },
     {
-      "id": "DISC003",
-      "name": "排骨飯三個300",
+      "id": "DISC009",
+      "name": "韓式炸雞三個500",
       "method": "點餐.Stragedies.FixedPrice",
       "buyXgetY": {
         "mainItem": "",
@@ -213,11 +199,11 @@
         "discountRate": 1
       },
       "fixedPrice": {
-        "mainItem": "排骨飯",
+        "mainItem": "韓式炸雞",
         "quantity": 3,
         "subItem": "",
         "subQuantity": 0,
-        "price": 300,
+        "price": 500,
         "discountRate": 1
       },
       "comboPrice": {
@@ -246,8 +232,8 @@
       }
     },
     {
-      "id": "DISC004",
-      "name": "雞絲飯搭滷味70元",
+      "id": "DISC010",
+      "name": "辣炒年糕搭煎餃70元",
       "method": "點餐.Stragedies.ComboPrice",
       "buyXgetY": {
         "mainItem": "",
@@ -274,9 +260,9 @@
         "discountRate": 1
       },
       "comboPrice": {
-        "mainItem": "雞絲飯",
+        "mainItem": "辣炒年糕",
         "quantity": 1,
-        "subItem": "滷味",
+        "subItem": "煎餃",
         "subQuantity": 1,
         "price": 70,
         "discountRate": 1
@@ -299,7 +285,7 @@
       }
     },
     {
-      "id": "DISC005",
+      "id": "DISC011",
       "name": "全場打8折",
       "method": "點餐.Stragedies.AllPercentageDiscount",
       "buyXgetY": {
@@ -328,7 +314,9 @@
       },
       "comboPrice": {
         "mainItem": "",
-        "quantity": 0,
+        "quantity
+
+": 0,
         "subItem": "",
         "subQuantity": 0,
         "price": 0,
@@ -352,8 +340,8 @@
       }
     },
     {
-      "id": "DISC006",
-      "name": "草莓鬆餅搭奶茶9折",
+      "id": "DISC012",
+      "name": "紅豆鬆餅搭檸檬紅茶9折",
       "method": "點餐.Stragedies.ComboPercentageDiscount",
       "buyXgetY": {
         "mainItem": "",
@@ -396,9 +384,9 @@
         "discountRate": 1
       },
       "comboPercentageDiscount": {
-        "mainItem": "草莓鬆餅",
+        "mainItem": "紅豆鬆餅",
         "quantity": 1,
-        "subItem": "奶茶",
+        "subItem": "檸檬紅茶",
         "subQuantity": 1,
         "price": 0,
         "discountRate": 0.9
